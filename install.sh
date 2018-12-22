@@ -11,5 +11,6 @@
 export DOTFILES_DIR="$PWD"
 ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
+ln -sfv "$DOTFILES_DIR/.vim" ~
 
 #echo ". $DOTFILES_DIR/.bashrc" >> ~/.bashrc

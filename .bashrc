@@ -10,5 +10,6 @@ alias grep="grep $GREP_OPTIONS"
 ######################################################
 
 
+#PS1='\$ '
 
-export PATH=~/dotfiles/bin:$PATH
+export PATH=$PWD/bin:$PATH
