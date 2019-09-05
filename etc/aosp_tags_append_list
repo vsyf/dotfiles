@@ -1,0 +1,14 @@
+frameworks/av
+frameworks/native
+system/core/libbinderwrapper
+system/core/libcrypto_utils
+system/core/libutils
+system/core/libion
+system/core/libutils
+system/hwservicemanager
+system/libhidl
+system/libhwbinder
+system/media
+system/tools
+hardware/libhardware
+hardware/interfaces

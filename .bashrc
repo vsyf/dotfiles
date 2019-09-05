@@ -12,4 +12,7 @@ alias grep="grep $GREP_OPTIONS"
 
 #PS1='\$ '
 
-export PATH=$PWD/bin:$PATH
+export PATH=~/dotfiles/bin:$PATH
+export EDITOR=vim
+
+export YF_AOSP_TAGS_APPEND_LIST=~/dotfiles/etc/aosp_tags_append_list
