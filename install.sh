@@ -15,3 +15,6 @@ ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
 ln -sfv "$DOTFILES_DIR/.vim" ~
 
 echo ". $DOTFILES_DIR/.bashrc" >> ~/.bashrc
+
+# install chromium tools
+wget -O - https://raw.githubusercontent.com/vsyf/chromium_tools/master/install_chromium_tool.sh | bash
