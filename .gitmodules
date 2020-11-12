@@ -7,3 +7,6 @@
 [submodule "buildtools"]
 	path = buildtools
 	url = https://chromium.googlesource.com/chromium/src/buildtools
+[submodule ".oh-my-bash"]
+	path = .oh-my-bash
+	url = https://github.com/ohmybash/oh-my-bash.git
