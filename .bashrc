@@ -26,4 +26,4 @@ alias div='echo;echo "----------------------------------------------------------
 
 source ~/.dotfiles/.bashrc_oh-my-bash
 
-set_title() { printf '\e]2;%s\a' "$*"; }
+settitle() { printf '\e]2;%s\a' "$*"; }
