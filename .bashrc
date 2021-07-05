@@ -2,9 +2,9 @@
 
 ###################### grep ##########################
 # for grep
-GREP_OPTIONS="--exclude-dir=\.svn --exclude-dir=\.git --exclude=tags --exclude=cscope\.out"
-GREP_OPTIONS+=" --color=auto"
-alias grep="grep $GREP_OPTIONS"
+#GREP_OPTIONS="--exclude-dir=\.svn --exclude-dir=\.git --exclude=tags --exclude=cscope\.out"
+#GREP_OPTIONS+=" --color=auto"
+#alias grep="grep $GREP_OPTIONS"
 #export GREP_COLOR='1;32'
 
 ######################################################
@@ -25,3 +25,5 @@ alias clear="printf '\33[H\33[2J'"
 alias div='echo;echo "------------------------------------------------------------------------------";echo;echo;echo;echo;echo;echo;echo;echo;echo;echo;echo;echo "------------------------------------------------------------------------------";clean'
 
 source ~/.dotfiles/.bashrc_oh-my-bash
+
+set_title() { printf '\e]2;%s\a' "$*"; }

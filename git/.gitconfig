@@ -31,7 +31,7 @@
 	contrib = shortlog --summary --numbered
 
 [color]
-	ui = auto
+	ui = true
 [color "branch"]
 	current = yellow reverse
 	local = yellow
@@ -65,11 +65,12 @@
 	default = simple
 
 [fetch]
-  prune = true
+  	prune = true
 
 [diff]
-    renames = copies
-    tool = Kaleidoscope
+    	renames = copies
+    	tool = Kaleidoscope
+    	ignoreSubmodules = all
 [merge]
 	tool = Kaleidoscope
 [difftool "Kaleidoscope"]
