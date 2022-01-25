@@ -14,7 +14,12 @@ ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
 ln -sfv "$DOTFILES_DIR/.vim" ~
 
-echo ". $DOTFILES_DIR/.bashrc" >> ~/.bashrc
-
 # install chromium tools
 wget -O - https://raw.githubusercontent.com/vsyf/chromium_tools/master/install_chromium_tool.sh | bash
+
+# get oh-my-bash
+git clone https://github.com/ohmybash/oh-my-bash.git $DOTFILES_DIR/.oh-my-bash
+
+
+# At last, append bashrc
+echo ". $DOTFILES_DIR/.bashrc" >> ~/.bashrc
