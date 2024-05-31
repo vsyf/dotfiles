@@ -1,5 +1,3 @@
-
-
 ###################### grep ##########################
 # for grep
 #GREP_OPTIONS="--exclude-dir=\.svn --exclude-dir=\.git --exclude=tags --exclude=cscope\.out"
@@ -10,20 +8,38 @@
 ######################################################
 
 
-#PS1='\$ '
-
 export DOTFILES_BIN=~/.dotfiles/bin
+export DOTFILES_DEMUX_BIN=~/.dotfiles/bin/demux
 export CHROMIUM_DEPOTTOOLS_PATH=~/.dotfiles/depot_tools
 export CHROMIUM_BUILDTOOLS_PATH=~/work/code/webrtc_android/src/buildtools
-export PATH=$DOTFILES_BIN:$CHROMIUM_DEPOTTOOLS_PATH:$CHROMIUM_BUILDTOOLS_PATH:$PATH
+export PATH=$DOTFILES_BIN:$DOTFILES_DEMUX_BIN:$CHROMIUM_DEPOTTOOLS_PATH:$CHROMIUM_BUILDTOOLS_PATH:$PATH
+# chromium_tools
+export CHROMIUM_DEPOT_TOOL=$HOME/.dotfiles/tools/depot_tools
+export PATH=$CHROMIUM_DEPOT_TOOL:$PATH
+export CHROMIUM_BUILDTOOLS_PATH=$HOME/.dotfiles/tools/chromium_tools/chromium_tools/buildtools
 
 export EDITOR=vim
 
-export YF_AOSP_TAGS_APPEND_LIST=~/dotfiles/etc/aosp_tags_append_list
+export YF_AOSP_TAGS_APPEND_LIST=$HOME/.dotfiles/etc/aosp_tags_append_list
 
 alias clear="printf '\33[H\33[2J'"
 alias div='echo;echo "------------------------------------------------------------------------------";echo;echo;echo;echo;echo;echo;echo;echo;echo;echo;echo;echo "------------------------------------------------------------------------------";clean'
 
-source ~/.dotfiles/.bashrc_oh-my-bash
+# shellcheck source=.oh-my-bash.bashrc
+if [ -r "$HOME/.dotfiles/.oh-my-bash.bashrc" ]; then
+    source "$HOME/.dotfiles/.oh-my-bash.bashrc"
+fi
 
+# confirm reboot
+alias reboot="confirm_reboot"
+confirm_reboot() {
+  read -r -p 'Are you sure you want to reboot? (yes/no): ' answer
+  if [ "$answer" == "yes" ]; then
+    sh -c "sudo reboot"
+  else
+    echo "Reboot canceled."
+  fi
+}
+
+# settitle
 settitle() { printf '\e]2;%s\a' "$*"; }
