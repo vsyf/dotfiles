@@ -7,7 +7,6 @@
 
 ######################################################
 
-
 export DOTFILES_BIN=~/.dotfiles/bin
 export DOTFILES_DEMUX_BIN=~/.dotfiles/bin/demux
 export CHROMIUM_DEPOTTOOLS_PATH=~/.dotfiles/depot_tools
@@ -27,7 +26,7 @@ alias div='echo;echo "----------------------------------------------------------
 
 # shellcheck source=.oh-my-bash.bashrc
 if [ -r "$HOME/.dotfiles/.oh-my-bash.bashrc" ]; then
-    source "$HOME/.dotfiles/.oh-my-bash.bashrc"
+  source "$HOME/.dotfiles/.oh-my-bash.bashrc"
 fi
 
 # confirm reboot
@@ -41,5 +40,18 @@ confirm_reboot() {
   fi
 }
 
+# kitty
+IS_KITTY=0
+if [ -n "$KITTY_WINDOW_ID" ]; then
+  IS_KITTY=1
+  #echo "You are using the Kitty terminal."
+fi
+
 # settitle
-settitle() { printf '\e]2;%s\a' "$*"; }
+settitle() {
+  if [ $IS_KITTY -eq 1 ]; then
+    kitty @ set-tab-title "$@"
+  else
+    printf '\e]2;%s\a' "$*"
+  fi
+}
