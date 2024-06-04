@@ -21,7 +21,7 @@ export EDITOR=vim
 
 export YF_AOSP_TAGS_APPEND_LIST=$HOME/.dotfiles/etc/aosp_tags_append_list
 
-alias clear="printf '\33[H\33[2J'"
+#alias clear="printf '\33[H\33[2J'"
 alias div='echo;echo "------------------------------------------------------------------------------";echo;echo;echo;echo;echo;echo;echo;echo;echo;echo;echo;echo "------------------------------------------------------------------------------";clean'
 
 # shellcheck source=.oh-my-bash.bashrc
@@ -44,8 +44,12 @@ confirm_reboot() {
 IS_KITTY=0
 if [ -n "$KITTY_WINDOW_ID" ]; then
   IS_KITTY=1
-  #echo "You are using the Kitty terminal."
+  # kitty specific settings
+  alias ssh="kitty +kitten ssh"
+  alias kdiff="kitty +kitten diff"
+
 fi
+
 
 # settitle
 settitle() {
