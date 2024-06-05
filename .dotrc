@@ -1,9 +1,14 @@
+#!/bin/sh
+
 ###################### grep ##########################
 # for grep
 #GREP_OPTIONS="--exclude-dir=\.svn --exclude-dir=\.git --exclude=tags --exclude=cscope\.out"
 #GREP_OPTIONS+=" --color=auto"
 #alias grep="grep $GREP_OPTIONS"
 #export GREP_COLOR='1;32'
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 ######################################################
 
@@ -13,7 +18,7 @@ export CHROMIUM_DEPOTTOOLS_PATH=~/.dotfiles/depot_tools
 export CHROMIUM_BUILDTOOLS_PATH=~/work/code/webrtc_android/src/buildtools
 export PATH=$DOTFILES_BIN:$DOTFILES_DEMUX_BIN:$CHROMIUM_DEPOTTOOLS_PATH:$CHROMIUM_BUILDTOOLS_PATH:$PATH
 # chromium_tools
-export CHROMIUM_DEPOT_TOOL=$HOME/.dotfiles/tools/depot_tools
+export CHROMIUM_DEPOT_TOOL="$HOME/.dotfiles/tools/depot_tools"
 export PATH=$CHROMIUM_DEPOT_TOOL:$PATH
 export CHROMIUM_BUILDTOOLS_PATH=$HOME/.dotfiles/tools/chromium_tools/chromium_tools/buildtools
 
@@ -24,9 +29,10 @@ export YF_AOSP_TAGS_APPEND_LIST=$HOME/.dotfiles/etc/aosp_tags_append_list
 #alias clear="printf '\33[H\33[2J'"
 alias div='echo;echo "------------------------------------------------------------------------------";echo;echo;echo;echo;echo;echo;echo;echo;echo;echo;echo;echo "------------------------------------------------------------------------------";clean'
 
-# shellcheck source=.oh-my-bash.bashrc
-if [ -r "$HOME/.dotfiles/.oh-my-bash.bashrc" ]; then
-  source "$HOME/.dotfiles/.oh-my-bash.bashrc"
+if [ -n "$ZSH_NAME" ]; then
+  . "$HOME/.dotfiles/.oh-my-zshrc"
+else
+  . "$HOME/.dotfiles/.oh-my-bashrc"
 fi
 
 # confirm reboot
@@ -49,7 +55,6 @@ if [ -n "$KITTY_WINDOW_ID" ]; then
   alias kdiff="kitty +kitten diff"
 
 fi
-
 
 # settitle
 settitle() {
