@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 #
 # gentags_yf.sh
 # Copyright (C) 2019 youfa.song <vsyfar@gmail.com>
@@ -6,29 +6,24 @@
 # Distributed under terms of the GPLv2 license.
 #
 
-
-function append_tags()
-{
-	if [ ! -d $1 ]; then
-		echo "$1 is null!!!"
-	else
-		echo "append tags $1"
-		ctags -R --append=yes $1
-	fi
+function append_tags() {
+  if [ ! -d $1 ]; then
+    echo "$1 is null!!!"
+  else
+    echo "append tags $1"
+    ctags -R --append=yes $1
+  fi
 }
 
-function gentags_aosp()
-{
-	echo "gentags_aosp:$YF_AOSP_TAGS_APPEND_LIST"
-	cat $YF_AOSP_TAGS_APPEND_LIST | while read line
-do
-	append_tags $line
-done
+function gentags_aosp() {
+  echo "gentags_aosp:$YF_AOSP_TAGS_APPEND_LIST"
+  cat $YF_AOSP_TAGS_APPEND_LIST | while read line; do
+    append_tags $line
+  done
 }
 
-function main()
-{
-	gentags_aosp
+function main() {
+  gentags_aosp
 }
 
 main
