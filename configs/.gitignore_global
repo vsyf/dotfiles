@@ -9,3 +9,4 @@ tags
 .ycm_extra_conf.py
 .ccls-cache
 compile_commands.json
+.cache

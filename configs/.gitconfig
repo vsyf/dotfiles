@@ -1,9 +1,9 @@
 [user]
-	name = youfa.song
+	name = youfa
 	email = vsyfar@gmail.com
 
 [github]
-	user = vsyf
+	user = yoofa
 
 [core]
 	excludesfile = ~/.gitignore_global
@@ -71,16 +71,30 @@
     	renames = copies
     	tool = Kaleidoscope
     	ignoreSubmodules = all
+
 [merge]
 	tool = Kaleidoscope
+
+[filter "lfs"]
+        smudge = git-lfs smudge -- %f
+        process = git-lfs filter-process
+        required = true
+        clean = git-lfs clean -- %f
+
+[format]
+	signoff = true
+
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+
 [mergetool "Kaleidoscope"]
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
+
 [difftool "sourcetree"]
 	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
 	path = 
+
 [mergetool "sourcetree"]
 	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
