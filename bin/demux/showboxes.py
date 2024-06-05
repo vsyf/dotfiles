@@ -18,7 +18,7 @@ def getboxlist(buf, parent=None):
             boxes.append(box)
     except:
         import traceback
-        print traceback.format_exc()
+        print (traceback.format_exc())
     return boxes
 
 def get_box_node(box, args):
