@@ -1,4 +1,7 @@
 chromium_tools
 tools
-nvim
 .oh-my-zsh
+.oh-my-bash
+configs/oh-my-zsh
+configs/oh-my-bash
+configs/nvim
