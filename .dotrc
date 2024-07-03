@@ -1,5 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
+export DOTFILES_DIR="$(cd "$(dirname "$0")"/.. && pwd)"
 ###################### grep ##########################
 # for grep
 #GREP_OPTIONS="--exclude-dir=\.svn --exclude-dir=\.git --exclude=tags --exclude=cscope\.out"
@@ -12,15 +13,13 @@ export LANG=en_US.UTF-8
 
 ######################################################
 
-export DOTFILES_BIN=~/.dotfiles/bin
-export DOTFILES_DEMUX_BIN=~/.dotfiles/bin/demux
-export CHROMIUM_DEPOTTOOLS_PATH=~/.dotfiles/depot_tools
-export CHROMIUM_BUILDTOOLS_PATH=~/work/code/webrtc_android/src/buildtools
-export PATH=$DOTFILES_BIN:$DOTFILES_DEMUX_BIN:$CHROMIUM_DEPOTTOOLS_PATH:$CHROMIUM_BUILDTOOLS_PATH:$PATH
+export DOTFILES_BIN=$DOTFILES_DIR/bin
+export DOTFILES_DEMUX_BIN=$DOTFILES_DIR/bin/demux
+export PATH=$DOTFILES_BIN:$DOTFILES_DEMUX_BIN:$PATH
 # chromium_tools
 export CHROMIUM_DEPOT_TOOL="$HOME/.dotfiles/tools/depot_tools"
-export PATH=$CHROMIUM_DEPOT_TOOL:$PATH
-export CHROMIUM_BUILDTOOLS_PATH=$HOME/.dotfiles/tools/chromium_tools/chromium_tools/buildtools
+export CHROMIUM_BUILDTOOLS_PATH=$HOME/.dotfiles/tools/chromium_build_tools/buildtools
+export PATH=$CHROMIUM_DEPOT_TOOL:$CHROMIUM_BUILDTOOLS_PATH:$PATH
 
 export EDITOR=vim
 
