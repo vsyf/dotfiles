@@ -17,7 +17,7 @@ if [ ! -d $DEPOT_TOOLS_DIR ]; then
   git clone https://chromium.googlesource.com/chromium/tools/depot_tools $DEPOT_TOOLS_DIR
 
   # chromium tools fetch config into depot_tools
-  wget https://raw.githubusercontent.com/vsyf/chromium_tools/main/chromium_tools.py -O $DEPOT_TOOLS_DIR/fetch_configs/chromium_tools.py
+  wget https://raw.githubusercontent.com/yoofa/chromium_tools/master/chromium_tools.py -O $DEPOT_TOOLS_DIR/fetch_configs/chromium_tools.py
 
 else
   echo -e "\033[32m $DEPOT_TOOLS_DIR already exists, no need install again \033[0m"
@@ -28,8 +28,8 @@ export PATH=$PATH:$CHROMIUM_DEPOT_TOOL
 
 if [ ! -d $CHROMIUM_BUILD_TOOL_DIR ]; then
   mkdir -p $CHROMIUM_BUILD_TOOL_DIR
-  cd $INSTALL_TOOL_DIR || exit
-  echo "enter $INSTALL_TOOL_DIR"
+  cd $CHROMIUM_BUILD_TOOL_DIR || exit
+  echo "enter $CHROMIUM_BUILD_TOOL_DIR"
   echo -e "\033[32m download build tools ... \033[0m"
   fetch --nohooks chromium_tools
   gclient sync
