@@ -109,3 +109,9 @@ bindkey '^ ' autosuggest-accept
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# 禁用立即追加历史记录
+unsetopt inc_append_history
+
+# 禁用历史记录共享
+unsetopt share_history
