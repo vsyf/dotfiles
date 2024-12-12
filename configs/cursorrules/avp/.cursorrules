@@ -1,0 +1,34 @@
+# 项目背景
+这是一个主要用modern c++编写的音视频播放器;
+它具有跨平台的特性,也就是说他会使用linux alsa, pulse audio, android java audio sdk, android aaudio, libavcodec, android java MediaCodec, android jni AMediaCodec 等等组件实现其跨平台所需要的audio sink, codec, video render功能.
+
+# 编码标准
+使用modern c++, 与chromium的代码风格或者google coding style一致
+编写代码时最好是TDD, 能够同时提供覆盖大部分逻辑的单元测试代码.
+
+# 文件结构
+## 1. 该项目使用和chromium一样的gn作为编译工具, 所以会利用chromium的几个仓库来构建跨平台的编译环境, 这些目录可以不用深度所以, 大多数情况下不会直接使用里面的代码
+ 它们分别是 build/buildtools/testing/tools这4个目录
+
+## 2. 个人项目通用仓库目录
+> 核心模块
+base  -> 基础库,实现一些日志,task队列等功能. 这个仓库不仅仅会在player使用,还会应用于其他项目
+media -> multimedia项目的通用代码. 这个仓库不仅仅会在player使用,还会应用于其他项目比如投屏,行车记录仪,视频通话等等
+
+## 3. player 专属目录
+> 核心模块
+api -> 定义 player极其组件对应的interface
+player -> 播放器的核心逻辑部分
+content_source -> 不同的内容生产模块实现的地方,如GenericSource, HLSSource, RTSPSource, RTMPSource, DashSource等等
+demuxer -> 不同的解复用模块实现的地方, 如Mp4Demuxer, MkvDemuxer, AVIDemuxer, TSDemuxer等等
+sdk/Android -> 提供Android java sdk.
+examples -> 示例代码目录,如测试播放工具, Android demo播放app等
+
+# 测试要求
+c++使用gtest编写单元测试
+单元测试代码覆盖率最好达到80%
+
+# 文档规范
+注释/文档一律使用英文
+函数需要有具体的参数返回值注释, 方便Doxygen生成文档
+每个主要目录必须包含 README.md 文件

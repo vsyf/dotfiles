@@ -1,11 +1,13 @@
 #!/bin/bash
 
-export DOTFILES_DIR="$(cd "$(dirname "$0")"/.. && pwd)"
+if [ -z "$DOTFILES_DIR" ]; then
+  export DOTFILES_DIR="$(cd "$(dirname "$0")"/.. && pwd)"
+fi
 ###################### grep ##########################
 # for grep
-#GREP_OPTIONS="--exclude-dir=\.svn --exclude-dir=\.git --exclude=tags --exclude=cscope\.out"
-#GREP_OPTIONS+=" --color=auto"
-#alias grep="grep $GREP_OPTIONS"
+GREP_OPTIONS="--exclude-dir=\.svn --exclude-dir=\.git --exclude=tags --exclude=cscope\.out --exclude=\.class -exclude=\.kotlin_modules"
+GREP_OPTIONS+=" --color=auto"
+alias grep="grep $GREP_OPTIONS"
 #export GREP_COLOR='1;32'
 
 export LC_ALL=en_US.UTF-8
@@ -13,17 +15,23 @@ export LANG=en_US.UTF-8
 
 ######################################################
 
-export DOTFILES_BIN=$DOTFILES_DIR/bin
-export DOTFILES_DEMUX_BIN=$DOTFILES_DIR/bin/demux
-export PATH=$DOTFILES_BIN:$DOTFILES_DEMUX_BIN:$PATH
 # chromium_tools
 export CHROMIUM_DEPOT_TOOL="$HOME/.dotfiles/tools/depot_tools"
 export CHROMIUM_BUILDTOOLS_PATH=$HOME/.dotfiles/tools/chromium_build_tools/buildtools
 export PATH=$CHROMIUM_DEPOT_TOOL:$CHROMIUM_BUILDTOOLS_PATH:$PATH
 
+export DOTFILES_BIN=$DOTFILES_DIR/bin
+export DOTFILES_DEMUX_BIN=$DOTFILES_DIR/bin/demux
+export PATH=$DOTFILES_BIN:$DOTFILES_DEMUX_BIN:$PATH
+
 export EDITOR=vim
 
 export YF_AOSP_TAGS_APPEND_LIST=$HOME/.dotfiles/etc/aosp_tags_append_list
+
+# The next line enables bash completion for git cl.
+if [ -f "$CHROMIUM_DEPOT_TOOL/git_cl_completion.sh" ]; then
+  . "$CHROMIUM_DEPOT_TOOL/git_cl_completion.sh"
+fi
 
 #alias clear="printf '\33[H\33[2J'"
 alias div='echo;echo "------------------------------------------------------------------------------";echo;echo;echo;echo;echo;echo;echo;echo;echo;echo;echo;echo "------------------------------------------------------------------------------";clean'
